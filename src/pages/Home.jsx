@@ -7,10 +7,20 @@ import ContactSection from "../components/home/ContactSection";
 export default function Home() {
   return (
     <>
-      <HeroSection />
-      <AboutSection />
-      <ServicesPreview />
+      <div id="home">
+        <HeroSection />
+      </div>
+
+      <div id="about">
+        <AboutSection />
+      </div>
+
+      <div id="services">
+        <ServicesPreview />
+      </div>
+
       <MyWorkSection />
+
       <ContactSection />
     </>
   );

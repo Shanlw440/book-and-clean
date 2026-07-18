@@ -1,8 +1,26 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  background: #F6F3EE;
-  color: #3E342C;
-  font-family: 'Poppins', sans-serif;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #f6f3ee;
+  color: #3e342c;
+  font-family: "Poppins", sans-serif;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+#home,
+#about,
+#services,
+#contact {
+  scroll-margin-top: 110px;
 }

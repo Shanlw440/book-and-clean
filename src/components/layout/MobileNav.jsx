@@ -1,96 +1,164 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { Menu, X, Camera, Calendar } from "lucide-react";
+import {
+  Menu,
+  X,
+  Phone,
+  MessageCircle,
+  Home,
+  Info,
+  Briefcase,
+  Mail,
+} from "lucide-react";
+
+const PHONE = "07752263659";
+
+const WHATSAPP =
+  "https://wa.me/447752263659?text=Hi%20Book%26Clean%2C%20I'd%20like%20to%20request%20a%20quote.";
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
 
+  const scrollToSection = (sectionId) => {
+    setOpen(false);
+
+    setTimeout(() => {
+      const section = document.getElementById(sectionId);
+
+      if (!section) return;
+
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 300);
+  };
+
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-[#F6F3EE]/90 backdrop-blur-md border-b border-black/5">
-        <div className="flex items-center justify-between px-5 py-4 max-w-6xl mx-auto">
-          <Link to="/">
+      {/* Header */}
+      <header className="fixed left-0 right-0 top-0 z-40 border-b border-gray-200 bg-white/90 backdrop-blur-lg">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <button
+            type="button"
+            onClick={() => scrollToSection("home")}
+            aria-label="Go to homepage"
+            className="cursor-pointer"
+          >
             <img
               src="/images/logo.png"
-              alt="Lizzy Smith Hairdressing"
-              className="w-10 h-10 object-contain"
+              alt="Book&Clean"
+              className="h-16 w-auto object-contain transition hover:scale-105"
             />
-          </Link>
+          </button>
 
-          <button onClick={() => setOpen(true)} aria-label="Open menu">
-            <Menu className="w-6 h-6 text-[#3E342C]" />
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            aria-label="Open menu"
+            aria-expanded={open}
+            className="rounded-lg p-2 transition hover:bg-[#faf8f5]"
+          >
+            <Menu className="h-8 w-8 text-[#222]" />
           </button>
         </div>
       </header>
 
+      {/* Overlay */}
       {open && (
-        <div
-          className="fixed inset-0 bg-black/40 z-50"
+        <button
+          type="button"
+          aria-label="Close menu"
           onClick={() => setOpen(false)}
+          className="fixed inset-0 z-50 bg-black/50"
         />
       )}
 
+      {/* Mobile Menu */}
       <aside
-        className={`fixed top-0 right-0 h-full w-[85%] max-w-sm bg-[#F6F3EE] z-50 shadow-2xl transition-transform duration-300 ${
+        className={`fixed right-0 top-0 z-[60] h-full w-[88%] max-w-sm overflow-y-auto bg-white shadow-2xl transition-transform duration-300 ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between px-6 py-5 border-b border-black/5">
-          <img
-            src="/images/logo.png"
-            alt="Lizzy Smith Hairdressing"
-            className="w-14 h-14 object-contain"
-          />
+        {/* Header */}
+        <div className="flex items-center justify-between border-b px-6 py-6">
+          <button
+            type="button"
+            onClick={() => scrollToSection("home")}
+            className="cursor-pointer"
+          >
+            <img
+              src="/images/logo.png"
+              alt="Book&Clean"
+              className="h-16 w-auto object-contain"
+            />
+          </button>
 
-          <button onClick={() => setOpen(false)} aria-label="Close menu">
-            <X className="w-6 h-6 text-[#3E342C]" />
+          <button
+            type="button"
+            onClick={() => setOpen(false)}
+            aria-label="Close menu"
+          >
+            <X className="h-8 w-8 text-[#222]" />
           </button>
         </div>
 
-        <nav className="flex flex-col p-6 gap-6">
-          <Link
-            to="/"
-            onClick={() => setOpen(false)}
-            className="text-lg text-[#3E342C]"
+        {/* Navigation */}
+        <nav className="flex flex-col gap-2 p-6">
+          <button
+            type="button"
+            onClick={() => scrollToSection("home")}
+            className="flex items-center gap-4 rounded-xl p-4 text-left transition hover:bg-[#faf8f5]"
           >
+            <Home className="h-5 w-5 text-[#b5964d]" />
             Home
-          </Link>
+          </button>
 
-          <Link
-            to="/prices"
-            onClick={() => setOpen(false)}
-            className="text-lg text-[#3E342C]"
+          <button
+            type="button"
+            onClick={() => scrollToSection("about")}
+            className="flex items-center gap-4 rounded-xl p-4 text-left transition hover:bg-[#faf8f5]"
           >
-            Prices
-          </Link>
+            <Info className="h-5 w-5 text-[#b5964d]" />
+            About
+          </button>
 
-          <Link
-            to="/terms"
-            onClick={() => setOpen(false)}
-            className="text-lg text-[#3E342C]"
+          <button
+            type="button"
+            onClick={() => scrollToSection("services")}
+            className="flex items-center gap-4 rounded-xl p-4 text-left transition hover:bg-[#faf8f5]"
           >
-            Terms & Conditions
-          </Link>
+            <Briefcase className="h-5 w-5 text-[#b5964d]" />
+            Services
+          </button>
 
+          <button
+            type="button"
+            onClick={() => scrollToSection("contact")}
+            className="flex items-center gap-4 rounded-xl p-4 text-left transition hover:bg-[#faf8f5]"
+          >
+            <Mail className="h-5 w-5 text-[#b5964d]" />
+            Contact
+          </button>
+
+          {/* CTA Buttons */}
           <a
-            href="https://instagram.com/lizzysmithhair"
+            href={WHATSAPP}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-lg text-[#3E342C]"
+            onClick={() => setOpen(false)}
+            className="mt-8 flex items-center justify-center gap-2 rounded-2xl bg-[#b5964d] py-4 font-semibold text-white transition hover:bg-[#9f823f]"
           >
-            <Camera className="w-5 h-5" />
-            Instagram
+            <MessageCircle className="h-5 w-5" />
+            Get a Free Quote
           </a>
 
           <a
-            href="https://www.instagram.com/lizzysmithhair/"
-            target="_blank"
-            rel="noopener noreferrer"
+            href={`tel:${PHONE}`}
             onClick={() => setOpen(false)}
-            className="mt-4 bg-[#5D7A63] text-white py-4 rounded-2xl font-medium flex items-center justify-center gap-2"
+            className="mt-4 flex items-center justify-center gap-2 rounded-2xl border border-[#b5964d] py-4 font-semibold text-[#b5964d] transition hover:bg-[#b5964d] hover:text-white"
           >
-            <Calendar className="w-5 h-5" />
-            Message to Book
+            <Phone className="h-5 w-5" />
+            Call Now
           </a>
         </nav>
       </aside>

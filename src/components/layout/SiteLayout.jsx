@@ -5,12 +5,13 @@ import BookNowBar from "./BookNowBar";
 
 export default function SiteLayout() {
   return (
-    <div className="min-h-screen bg-[#F6F3EE] text-[#3E342C]">
+    <div className="min-h-screen bg-white text-[#222]">
       <MobileNav />
 
       <main>
         <Outlet />
       </main>
+
       <BookNowBar />
       <Footer />
     </div>

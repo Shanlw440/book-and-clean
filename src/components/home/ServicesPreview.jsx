@@ -1,90 +1,124 @@
-import { Scissors, Palette, Sparkles, ChevronRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import {
+  Home,
+  Sofa,
+  Building2,
+  Sparkles,
+  KeyRound,
+  Car,
+  ArrowRight,
+} from "lucide-react";
 
 const services = [
   {
-    icon: Scissors,
-    title: "Cut & Styling",
-    desc: "Precision cuts, blow dries and everyday styling.",
-    price: "From £20",
-  },
-  {
-    icon: Palette,
-    title: "Colour Services",
-    desc: "Root colour, full head colour and gloss treatments.",
-    price: "From £35",
+    icon: Home,
+    title: "House Cleaning",
+    desc: "Regular and one-off cleaning to keep your home spotless, fresh and comfortable.",
+    message:
+      "Hi Book&Clean, I'd like to request a quote for house cleaning.",
   },
   {
     icon: Sparkles,
-    title: "Specialist Colour",
-    desc: "Foils, bleach and tone, bespoke colouring and corrections.",
-    price: "From £45",
+    title: "Deep Cleaning",
+    desc: "A thorough top-to-bottom clean, ideal for spring cleaning or giving your property a complete refresh.",
+    message:
+      "Hi Book&Clean, I'd like to request a quote for deep cleaning.",
+  },
+  {
+    icon: KeyRound,
+    title: "End of Tenancy",
+    desc: "Detailed cleaning designed to leave a property ready for inspection, new tenants or handover.",
+    message:
+      "Hi Book&Clean, I'd like to request a quote for end of tenancy cleaning.",
+  },
+  {
+    icon: Sofa,
+    title: "Upholstery Sanitisation",
+    desc: "Professional sanitisation for sofas, chairs, armchairs and carpets using specialist equipment.",
+    message:
+      "Hi Book&Clean, I'd like to request a quote for upholstery sanitisation.",
+  },
+  {
+    icon: Building2,
+    title: "Commercial Cleaning",
+    desc: "Reliable cleaning for offices, schools, pubs, restaurants, stores and other business premises.",
+    message:
+      "Hi Book&Clean, I'd like to request a quote for commercial cleaning.",
+  },
+  {
+    icon: Car,
+    title: "Mattress & Car Seat Cleaning",
+    desc: "Specialist cleaning that helps remove dirt, bacteria, allergens and unwanted odours.",
+    message:
+      "Hi Book&Clean, I'd like to request a quote for mattress or car seat cleaning.",
   },
 ];
 
 export default function ServicesPreview() {
   return (
-    <section className="px-6 py-16 bg-[#EFE9DF]">
-      <div className="max-w-md mx-auto">
+    <section id="services" className="bg-white px-6 py-20">
+      <div className="mx-auto max-w-6xl">
+        {/* Heading */}
+        <div className="mb-14 text-center">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#c5a45a]">
+            Our Services
+          </p>
 
-        <div className="text-center mb-10">
           <h2
-            className="text-4xl text-[#3E342C]"
+            className="text-4xl text-[#222] md:text-5xl"
             style={{ fontFamily: "Cormorant Garamond" }}
           >
-            Services
+            Cleaning Services Tailored to You
           </h2>
 
-          <div className="w-14 h-px bg-[#5D7A63]/30 mx-auto mt-4" />
+          <p className="mx-auto mt-6 max-w-3xl leading-8 text-gray-600">
+            Every property is different. Whether you need regular cleaning, a
+            one-off deep clean or specialist sanitisation, Book&amp;Clean
+            provides a reliable service using professional equipment and
+            quality cleaning products.
+          </p>
         </div>
 
-        <div className="space-y-4">
+        {/* Service Cards */}
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => {
             const Icon = service.icon;
 
+            const whatsappUrl = `https://wa.me/447752263659?text=${encodeURIComponent(
+              service.message
+            )}`;
+
             return (
-              <div
+              <a
                 key={service.title}
-                className="bg-white rounded-2xl p-5 shadow-sm border border-[#DDD6CC]"
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Request a quote for ${service.title}`}
+                className="group flex h-full flex-col rounded-3xl border border-gray-200 bg-[#faf8f5] p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#b5964d] focus:ring-offset-4"
               >
-                <div className="flex gap-4 items-start">
-
-                  <div className="w-11 h-11 rounded-xl bg-[#5D7A63]/10 flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-[#5D7A63]" />
-                  </div>
-
-                  <div className="flex-1">
-                    <div className="flex justify-between gap-3 items-start">
-                      <h3 className="font-semibold text-sm text-[#3E342C]">
-                        {service.title}
-                      </h3>
-
-                      <span className="text-xs font-semibold text-[#5D7A63] whitespace-nowrap">
-                        {service.price}
-                      </span>
-                    </div>
-
-                    <p className="text-xs text-[#7A7268] mt-1 leading-relaxed">
-                      {service.desc}
-                    </p>
-                  </div>
-
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#b5964d] text-white transition-transform duration-300 group-hover:scale-105">
+                  <Icon className="h-8 w-8" />
                 </div>
-              </div>
+
+                <h3
+                  className="mb-4 text-3xl text-[#222]"
+                  style={{ fontFamily: "Cormorant Garamond" }}
+                >
+                  {service.title}
+                </h3>
+
+                <p className="mb-8 flex-1 leading-8 text-gray-600">
+                  {service.desc}
+                </p>
+
+                <div className="inline-flex items-center gap-2 font-semibold text-[#b5964d] transition-all group-hover:gap-4">
+                  Request a Quote
+                  <ArrowRight className="h-5 w-5" />
+                </div>
+              </a>
             );
           })}
         </div>
-
-        <div className="text-center mt-8">
-          <Link
-            to="/prices"
-            className="inline-flex items-center gap-1 text-[#5D7A63] text-sm font-semibold"
-          >
-            View Full Price List
-            <ChevronRight className="w-4 h-4" />
-          </Link>
-        </div>
-
       </div>
     </section>
   );

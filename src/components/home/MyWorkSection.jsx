@@ -1,11 +1,32 @@
-import { Camera } from "lucide-react";
+import {
+  ShieldCheck,
+  Sparkles,
+  Clock3,
+  ThumbsUp,
+} from "lucide-react";
 import { motion } from "framer-motion";
 
-const workImages = [
-  "/images/work1.png",
-  "/images/work2.png",
-  "/images/work3.png",
-  "/images/work4.png",
+const reasons = [
+  {
+    icon: ShieldCheck,
+    title: "Professional Equipment",
+    text: "We use high-quality machines and professional cleaning products to deliver exceptional results every time.",
+  },
+  {
+    icon: Sparkles,
+    title: "Attention to Detail",
+    text: "Every room is cleaned with care, ensuring your home or business looks and feels its absolute best.",
+  },
+  {
+    icon: Clock3,
+    title: "Reliable & Flexible",
+    text: "Whether you need a regular clean or a one-off visit, we work around your schedule.",
+  },
+  {
+    icon: ThumbsUp,
+    title: "Trusted Service",
+    text: "Friendly, dependable and committed to providing an outstanding customer experience from start to finish.",
+  },
 ];
 
 export default function MyWorkSection() {
@@ -14,53 +35,91 @@ export default function MyWorkSection() {
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="px-6 py-16 bg-[#F6F3EE]"
+      transition={{ duration: 0.6 }}
+      className="bg-[#F6F3EE] py-20 px-6"
     >
-      <div className="max-w-md mx-auto">
-        <div className="text-center mb-10">
-          <h2
-            className="text-4xl text-[#3E342C]"
-            style={{ fontFamily: "Cormorant Garamond" }}
-          >
-            My Work
-          </h2>
+      <div className="max-w-6xl mx-auto">
+        {/* Heading */}
 
-          <p className="text-sm text-[#7A7268] mt-3">
-            Bespoke colour, soft blends and natural transformations.
+        <div className="text-center mb-14">
+          <p className="uppercase tracking-[0.25em] text-[#c5a45a] text-sm font-semibold mb-3">
+            Why Choose Us
           </p>
 
-          <div className="w-14 h-px bg-[#5D7A63]/30 mx-auto mt-4" />
+          <h2
+            className="text-4xl md:text-5xl text-[#222]"
+            style={{ fontFamily: "Cormorant Garamond" }}
+          >
+            Cleaning You Can Rely On
+          </h2>
+
+          <p className="max-w-3xl mx-auto mt-6 text-gray-600 leading-8">
+            We believe professional cleaning is about more than making a
+            property look tidy. It's about creating healthier, fresher spaces
+            while delivering a reliable service you can trust every time.
+          </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-          {workImages.map((image, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.94 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: index * 0.08 }}
-              className="aspect-[3/4] rounded-2xl overflow-hidden shadow-sm bg-[#EFE9DF]"
-            >
-              <img
-                src={image}
-                alt={`Lizzy Smith hair work ${index + 1}`}
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-          ))}
+        {/* Cards */}
+
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {reasons.map((reason, index) => {
+            const Icon = reason.icon;
+
+            return (
+              <motion.div
+                key={reason.title}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  delay: index * 0.1,
+                  duration: 0.45,
+                }}
+                className="group bg-white rounded-3xl p-8 text-center shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300"
+              >
+                <div className="w-16 h-16 rounded-full bg-[#b5964d] text-white flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <Icon className="w-8 h-8" />
+                </div>
+
+                <h3
+                  className="text-2xl text-[#222] mb-4"
+                  style={{ fontFamily: "Cormorant Garamond" }}
+                >
+                  {reason.title}
+                </h3>
+
+                <p className="text-gray-600 leading-7">
+                  {reason.text}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
 
-        <div className="text-center mt-8">
+        {/* Bottom Banner */}
+
+        <div className="mt-16 rounded-3xl bg-[#b5964d] text-white p-10 text-center shadow-xl">
+          <h3
+            className="text-3xl mb-4"
+            style={{ fontFamily: "Cormorant Garamond" }}
+          >
+            Ready for a Cleaner Home or Workplace?
+          </h3>
+
+          <p className="max-w-2xl mx-auto text-white/90 mb-8 leading-8">
+            Whether it's a regular clean, deep clean or specialist
+            sanitisation, we're here to help. Get in touch today for your free,
+            no-obligation quote.
+          </p>
+
           <a
-            href="https://instagram.com/lizzysmithhair"
+            href="https://wa.me/447752263659?text=Hi%20Book%26Clean%2C%20I'd%20like%20to%20request%20a%20quote."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[#5D7A63] text-sm font-semibold"
+            className="inline-flex items-center rounded-2xl bg-white px-8 py-4 font-semibold text-[#b5964d] transition hover:scale-105 hover:shadow-lg"
           >
-            <Camera className="w-4 h-4" />
-            View More on Instagram
+            Get Your Free Quote
           </a>
         </div>
       </div>
