@@ -19,7 +19,7 @@ export default function Footer() {
           {/* Company */}
           <div>
             <img
-              src="/images/logo.png"
+              src="/images/footer-logo.png"
               alt="Book&Clean"
               className="h-20 mb-6 object-contain"
             />
