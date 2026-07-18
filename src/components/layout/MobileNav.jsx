@@ -36,8 +36,8 @@ export default function MobileNav() {
   return (
     <>
       {/* Header */}
-      <header className="fixed left-0 right-0 top-0 z-40 border-b border-gray-200 bg-white/90 backdrop-blur-lg">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <header className="fixed left-0 right-0 top-0 z-40 border-b border-[#f1ede6] bg-white">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-0.5">
           <button
             type="button"
             onClick={() => scrollToSection("home")}
@@ -47,7 +47,7 @@ export default function MobileNav() {
             <img
               src="/images/logo.png"
               alt="Book&Clean"
-              className="h-16 w-auto object-contain transition hover:scale-105"
+              className="h-14 w-14 object-contain transition hover:scale-105"
             />
           </button>
 
@@ -58,7 +58,7 @@ export default function MobileNav() {
             aria-expanded={open}
             className="rounded-lg p-2 transition hover:bg-[#faf8f5]"
           >
-            <Menu className="h-8 w-8 text-[#222]" />
+            <Menu className="h-6 w-6 text-[#222]" />
           </button>
         </div>
       </header>
@@ -98,7 +98,7 @@ export default function MobileNav() {
             onClick={() => setOpen(false)}
             aria-label="Close menu"
           >
-            <X className="h-8 w-8 text-[#222]" />
+            <X className="h-7 w-7 text-[#222]" />
           </button>
         </div>
 
