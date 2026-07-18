@@ -43,7 +43,7 @@ export default function HeroSection() {
             is completed with care and attention to detail.
           </p>
 
-          <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-white/80 mb-8">
+          <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-white/80 mb-5">
             <Sparkles className="w-4 h-4 text-[#c5a45a] shrink-0" />
             <span>Professional equipment and quality products</span>
           </div>

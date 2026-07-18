@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import MobileNav from "./MobileNav";
 import Footer from "./Footer";
-import BookNowBar from "./BookNowBar";
 
 export default function SiteLayout() {
   return (
@@ -11,8 +10,6 @@ export default function SiteLayout() {
       <main>
         <Outlet />
       </main>
-
-      <BookNowBar />
       <Footer />
     </div>
   );
